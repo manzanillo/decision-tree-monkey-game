@@ -1,5 +1,5 @@
 body {
-    font-family: Roboto, Arial;
+  font-family: Roboto, Arial;
 }
 
 p {
@@ -16,28 +16,29 @@ p {
   flex-wrap: wrap;
 }
 
-.col{
+.col {
   width: 50%;
 }
 
-.col-results{
+.col-results {
   width: 40%;
 }
 
-#tree-container{
+#tree-container {
   width: 20%;
 }
 
-#tree-container-mobile{
+#tree-container-mobile {
   align-self: center;
-  width: 60%
+  width: 60%;
 }
 
-#tree{
+#tree {
   width: 100%;
 }
 
-#beisst, #beisstnicht {
+#beisst,
+#beisstnicht {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -52,17 +53,16 @@ p {
   .monkey {
     width: 20%;
   }
-  #tree-container-mobile{
+  #tree-container-mobile {
     display: none;
   }
 }
-
 
 @media only screen and (max-width: 1200px) {
   .monkey {
     width: 30%;
   }
-  #tree-container-mobile{
+  #tree-container-mobile {
     display: none;
   }
 }
@@ -71,10 +71,10 @@ p {
   .monkey {
     width: 30%;
   }
-  #tree-container-mobile{
+  #tree-container-mobile {
     display: block;
   }
-  #tree-container{
+  #tree-container {
     display: none;
   }
 }
@@ -82,11 +82,11 @@ p {
   .monkey {
     width: 45%;
   }
-  #tree-container-mobile{
+  #tree-container-mobile {
     display: block;
-    width: 80%
+    width: 80%;
   }
-  #tree-container{
+  #tree-container {
     display: none;
   }
 }
@@ -96,17 +96,17 @@ p {
     width: 45%;
   }
   text-align: left;
-  #tree-container-mobile{
+  #tree-container-mobile {
     display: block;
   }
-  #tree-container{
+  #tree-container {
     display: none;
   }
 }
 
 #button-row {
-    text-align: center;
-    margin-top: 3em;
+  text-align: center;
+  margin-top: 3em;
 }
 
 a {
@@ -116,10 +116,12 @@ a {
   cursor: pointer;
   color: #ffffff;
   font-size: 1em;
-  padding: 1em 4em;
+  padding: 1em 2em;
   margin: 1em;
   text-decoration: none;
   text-shadow: 0px 1px 0px #56371f;
+  width: 10em;
+  text-align: center;
 }
 a:hover {
   background-color: #56371f;
@@ -128,5 +130,3 @@ a:active {
   position: relative;
   top: 1px;
 }
-
-3
