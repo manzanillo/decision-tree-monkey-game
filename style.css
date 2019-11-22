@@ -8,6 +8,7 @@ body {
   text-align: center;
   justify-content: space-evenly;
   align-items: top;
+  flex-wrap: wrap;
 }
 
 .col{
@@ -22,6 +23,11 @@ body {
   width: 20%;
 }
 
+#tree-container-mobile{
+  align-self: center;
+  width: 60%
+}
+
 #tree{
   width: 100%;
 }
@@ -33,7 +39,6 @@ body {
   justify-content: center;
 }
 
-
 .monkey {
   padding: 0.2em;
 }
@@ -42,21 +47,54 @@ body {
   .monkey {
     width: 20%;
   }
+  #tree-container-mobile{
+    display: none;
+  }
 }
+
+
 @media only screen and (max-width: 1200px) {
   .monkey {
     width: 30%;
+  }
+  #tree-container-mobile{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .monkey {
+    width: 30%;
+  }
+  #tree-container-mobile{
+    display: block;
+  }
+  #tree-container{
+    display: none;
   }
 }
 @media only screen and (max-width: 600px) {
   .monkey {
     width: 45%;
   }
+  #tree-container-mobile{
+    display: block;
+    width: 80%
+  }
+  #tree-container{
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 375px) {
   .monkey {
     width: 45%;
+  }
+  #tree-container-mobile{
+    display: block;
+  }
+  #tree-container{
+    display: none;
   }
 }
 
