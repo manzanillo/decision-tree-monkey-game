@@ -7,16 +7,30 @@ body {
   flex-direction: row;
   text-align: center;
   justify-content: space-evenly;
+  align-items: top;
 }
 
 .col{
   width: 50%;
 }
 
+.col-results{
+  width: 40%;
+}
+
+#tree-container{
+  width: 20%;
+}
+
+#tree{
+  width: 100%;
+}
+
 #beisst, #beisstnicht {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 
@@ -24,12 +38,12 @@ body {
   padding: 0.2em;
 }
 
-@media only screen and (min-width: 901px) {
+@media only screen and (min-width: 1201px) {
   .monkey {
     width: 20%;
   }
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1200px) {
   .monkey {
     width: 30%;
   }
