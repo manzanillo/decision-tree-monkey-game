@@ -6,26 +6,43 @@ body {
   display: flex;
   flex-direction: row;
   text-align: center;
+  justify-content: space-evenly;
 }
 
-#beisst #beisstnicht {
+.col{
+  width: 50%;
+}
+
+#beisst, #beisstnicht {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+.monkey {
+  padding: 0.2em;
 }
 
 @media only screen and (min-width: 901px) {
-  img {
+  .monkey {
     width: 20%;
   }
 }
 @media only screen and (max-width: 900px) {
-  img {
-    width: 40%;
+  .monkey {
+    width: 30%;
   }
 }
 @media only screen and (max-width: 600px) {
-  img {
-    width: 50%;
+  .monkey {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .monkey {
+    width: 45%;
   }
 }
 
