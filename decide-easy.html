@@ -14,16 +14,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   </head>
   <body>
+    <p class="demo__tip">
+      Beißende Äffchen nach links schieben, nicht-beißende nach rechts
+    </p>
     <div class="demo">
       <header class="demo__header"></header>
       <div class="demo__content">
         <div class="demo__card-cont">
-          <div class="demo__card" data-bites="true">
-            <div class="demo__card__top lime">
-              <div class="demo__card__img"></div>
+          <div class="demo__card" data-bites="false">
+            <div class="demo__card__top purple">
+              <div class="demo__card__img">
+                <img src="img/16.png" width="100%" />
+              </div>
             </div>
             <div class="demo__card__btm">
-              <p class="demo__card__we">Whatever</p>
+              <p class="demo__card__we">1</p>
             </div>
             <div class="demo__card__choice m--reject"></div>
             <div class="demo__card__choice m--like"></div>
@@ -37,7 +42,7 @@
               </div>
             </div>
             <div class="demo__card__btm">
-              <p class="demo__card__we">Whatever</p>
+              <p class="demo__card__we">4</p>
             </div>
             <div class="demo__card__choice m--reject"></div>
             <div class="demo__card__choice m--like"></div>
@@ -51,7 +56,35 @@
               </div>
             </div>
             <div class="demo__card__btm">
-              <p class="demo__card__we">Whatever</p>
+              <p class="demo__card__we">3</p>
+            </div>
+            <div class="demo__card__choice m--reject"></div>
+            <div class="demo__card__choice m--like"></div>
+            <div class="demo__card__drag"></div>
+          </div>
+
+          <div class="demo__card" data-bites="false">
+            <div class="demo__card__top purple">
+              <div class="demo__card__img">
+                <img src="img/10.png" width="100%" />
+              </div>
+            </div>
+            <div class="demo__card__btm">
+              <p class="demo__card__we">1</p>
+            </div>
+            <div class="demo__card__choice m--reject"></div>
+            <div class="demo__card__choice m--like"></div>
+            <div class="demo__card__drag"></div>
+          </div>
+
+          <div class="demo__card" data-bites="false">
+            <div class="demo__card__top purple">
+              <div class="demo__card__img">
+                <img src="img/13.png" width="100%" />
+              </div>
+            </div>
+            <div class="demo__card__btm">
+              <p class="demo__card__we">1</p>
             </div>
             <div class="demo__card__choice m--reject"></div>
             <div class="demo__card__choice m--like"></div>
@@ -65,7 +98,21 @@
               </div>
             </div>
             <div class="demo__card__btm">
-              <p class="demo__card__we">Whatever</p>
+              <p class="demo__card__we">2</p>
+            </div>
+            <div class="demo__card__choice m--reject"></div>
+            <div class="demo__card__choice m--like"></div>
+            <div class="demo__card__drag"></div>
+          </div>
+
+          <div class="demo__card" data-bites="false">
+            <div class="demo__card__top purple">
+              <div class="demo__card__img">
+                <img src="img/20.png" width="100%" />
+              </div>
+            </div>
+            <div class="demo__card__btm">
+              <p class="demo__card__we">2</p>
             </div>
             <div class="demo__card__choice m--reject"></div>
             <div class="demo__card__choice m--like"></div>
@@ -78,28 +125,33 @@
                 <img src="img/03.png" width="100%" />
               </div>
             </div>
-            <div class="demo__card__btm">
-              <p class="demo__card__we">Whatever</p>
-            </div>
+            <div class="demo__card__btm"></div>
             <div class="demo__card__choice m--reject"></div>
             <div class="demo__card__choice m--like"></div>
             <div class="demo__card__drag"></div>
           </div>
         </div>
-        <p class="demo__tip">Swipe left or right</p>
+        <p class="demo__tip" id="feedback" style="display:none">Richtig!</p>
+        <p class="demo__tip" id="feedbackfalse" style="display:none">
+          Falsch!
+        </p>
       </div>
     </div>
-
+    <div class="demo__tip">
+      <p style="color: white; font-size: 100%;">Richtig eingeordnet</p>
+      <div id="counter" style="color: white; font-size: 700%;">0 / 0</div>
+    </div>
     <script>
-      $(document).ready(function() {
-        var animating = false
-        var cardsCounter = 0
-        var numOfCards = 6
-        var decisionVal = 80
-        var pullDeltaX = 0
-        var deg = 0
-        var $card, $cardReject, $cardLike
+      var animating = false
+      var cardsCounter = 0
+      var numOfCards = $(".demo__card").length
+      var decisionVal = 80
+      var pullDeltaX = 0
+      var deg = 0
+      var $card, $cardReject, $cardLike
+      var correct = 0
 
+      $(document).ready(function() {
         function pullChange() {
           animating = true
           deg = pullDeltaX / 10
@@ -118,21 +170,49 @@
         function release() {
           if (pullDeltaX >= decisionVal) {
             $card.addClass("to-right")
-            console.log($card)
+            if ($card.attr("data-bites") == "false") {
+              correct++
+              $("#feedbackfalse").hide()
+              $("#feedback").show()
+              setTimeout(function() {
+                $("#feedback").hide()
+              }, 1000)
+            } else {
+              $("#feedback").hide()
+              $("#feedbackfalse").show()
+              setTimeout(function() {
+                $("#feedbackfalse").hide()
+              }, 1000)
+            }
           } else if (pullDeltaX <= -decisionVal) {
             $card.addClass("to-left")
+            if ($card.attr("data-bites") == "true") {
+              correct++
+              $("#feedbackfalse").hide()
+              $("#feedback").show()
+              setTimeout(function() {
+                $("#feedback").hide()
+              }, 1000)
+            } else {
+              $("#feedback").hide()
+              $("#feedbackfalse").show()
+              setTimeout(function() {
+                $("#feedbackfalse").hide()
+              }, 1000)
+            }
           }
 
           if (Math.abs(pullDeltaX) >= decisionVal) {
             $card.addClass("inactive")
+            $card.hide()
+            cardsCounter++
+            $("#counter").text(correct + " / " + cardsCounter)
 
-            setTimeout(function() {
-              $card.addClass("below").removeClass("inactive to-left to-right")
-              cardsCounter++
-              if (cardsCounter === numOfCards) {
-                window.location.href = "result.html"
-              }
-            }, 300)
+            if (cardsCounter === numOfCards) {
+              setTimeout(function() {
+                window.location.href = "result-easy.html?correct=" + correct
+              }, 2000)
+            }
           }
 
           if (Math.abs(pullDeltaX) < decisionVal) {
