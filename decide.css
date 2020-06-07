@@ -19,7 +19,7 @@ body {
 .demo {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 55%;
   width: 30.6rem;
   height: 54rem;
   margin-left: -15.3rem;
@@ -181,5 +181,5 @@ body {
 }
 .demo__tip {
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
 }
